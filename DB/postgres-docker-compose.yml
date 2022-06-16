@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: 'cavalown'
+      POSTGRES_PASSWORD: 'cavalown5410'
+    # working_dir: /postgres_data
+    ports: 
+      - 5432:5432
+    volumes: 
+      - 要存檔的資料夾路徑:/var/lib/postgresql
