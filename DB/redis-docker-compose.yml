@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+  redis:
+    container_name: redis
+    image: redis
+    restart: always
+    command: redis-server --requirepass cavalown5410
+    # working_dir: /redis_data
+    ports:
+      - 6379:6379
+    volumes: 
+      - 要存檔的資料夾路徑:/data
