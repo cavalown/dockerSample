@@ -1,0 +1,44 @@
+version: '3.1'
+
+services:
+  mongoDB:
+    container_name: mongoDB
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: 'cavalown'
+      MONGO_INITDB_ROOT_PASSWORD: 'cavalown5410'
+    # working_dir: /mongo_data
+    ports: 
+      - 27017:27017
+    volumes: 
+      - 要存檔的資料夾路徑:/data/db
+    links: 
+      - postgres
+      - redis
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: 'cavalown'
+      POSTGRES_PASSWORD: 'cavalown5410'
+    # working_dir: /postgres_data
+    ports: 
+      - 5432:5432
+    volumes: 
+      - 要存檔的資料夾路徑:/var/lib/postgresql
+    links: 
+      - redis
+
+  redis:
+    container_name: redis
+    image: redis
+    restart: always
+    command: redis-server --requirepass cavalown5410
+    # working_dir: /redis_data
+    ports:
+      - 6379:6379
+    volumes: 
+      - 要存檔的資料夾路徑:/data
