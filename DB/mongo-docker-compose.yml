@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  mongoDB:
+    container_name: mongoDB
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: 'cavalown'
+      MONGO_INITDB_ROOT_PASSWORD: 'cavalown5410'
+    # working_dir: /mongo_data
+    ports: 
+      - 27017:27017
+    volumes: 
+      - 要存檔的資料夾路徑:/data/db
